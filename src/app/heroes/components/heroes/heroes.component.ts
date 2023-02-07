@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero.model';
-import { HeroService } from '../hero.service';
-
+import { Hero } from '../../../core/models/hero.model';
+import { HeroService } from '../../../core/services/hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -11,6 +10,7 @@ import { HeroService } from '../hero.service';
 export class HeroesComponent implements OnInit {
 
   public heroes: Hero[] = [];
+  public displayedColumns: string[] = ['id', 'name'];
 
   constructor(
     private heroService: HeroService,
