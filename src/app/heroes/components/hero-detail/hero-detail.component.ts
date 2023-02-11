@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class HeroDetailComponent implements OnInit {
 
   hero!: Hero;
+  isEditing!: boolean;
 
   constructor(
     private heroService: HeroService,
@@ -24,12 +25,32 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.heroService.getHero(id).subscribe(hero => this.hero = hero);
+    const paramId = this.route.snapshot.paramMap.get('id');
+
+    if (paramId === 'new') {
+      this.isEditing = false;
+      this.hero = { name: '' } as Hero;
+    } else {
+      this.isEditing = true;
+      const id = Number(Number(paramId));
+      this.heroService.getOne(id).subscribe(hero => this.hero = hero);
+    }
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  update(): void {
+    this.heroService.update(this.hero).subscribe(() => this.goBack());
+  }
+
+  create(): void {
+    this.heroService.update(this.hero).subscribe(() => this.goBack());
+  }
+
+  isFormValid(): boolean {
+    return !! this.hero.name.trim();
   }
 
 }
