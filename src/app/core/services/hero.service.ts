@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, of } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Hero } from '../models/hero.model';
 import { MessageService } from './message.service';
@@ -49,6 +49,20 @@ export class HeroService {
   delete(hero: Hero): Observable<Hero> {
     return this.http.delete<Hero>(this.getUrl(hero.id)).pipe(
       tap(() => this.log(`Deleted ${this.descAttribute(hero)}`))
+    );
+  }
+
+  search(term: string): Observable<Hero[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+
+    return this.http.get<Hero[]>(`${this.heroesUrl}?name=${term}`).pipe(
+      tap((heroes) => {
+        heroes.length
+          ? this.log(`Found ${heroes.length} Heroes Matching ${term}`)
+          : this.log(`No Heroes Matching ${term}`)
+      })
     );
   }
 
