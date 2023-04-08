@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "email": "giovanna.rodrigues@outlook.com.br",
+      "password": "$2a$10$PqeWWBP65.VnJaS/Qc278eb/sxNOJU9JW/bOYIrvARtWUI2uPF3EO",
+      "name": "Giovanna Cardoso Rodrigues",
+      "birthDate": "1993-07-15T03:00:00.000Z",
+      "cpf": "000.000.000-00",
+      "gender": "F",
+      "code": "36072-620",
+      "address": "Rua Nilza de Lourdes Fortes",
+      "number": "1767",
+      "city": "Juiz de Fora",
+      "state": "MG",
+      "district": "Barão do Retiro",
+      "role": "A",
+      "id": 1
+    }
+  ]
+}

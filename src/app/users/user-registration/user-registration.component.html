@@ -1,0 +1,24 @@
+<mat-dialog-content>
+  <mat-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="user.form">
+      <ng-template matStepLabel>User</ng-template>
+      <app-user-information #user [user]="data.user" (formValidEvent)="onFormValid($event)"></app-user-information>
+    </mat-step>
+
+    <mat-step [stepControl]="address.form">
+      <ng-template matStepLabel>Address</ng-template>
+      <app-user-address #address [user]="data.user" (formValidEvent)="onFormValid($event)"></app-user-address>
+    </mat-step>
+
+    <mat-step [stepControl]="account.form">
+      <ng-template matStepLabel>Account</ng-template>
+      <app-user-account #account [user]="data.user" (formValidEvent)="onFormValid($event)"></app-user-account>
+    </mat-step>
+  </mat-stepper>
+</mat-dialog-content>
+
+<mat-dialog-actions [align]="'end'">
+  <button mat-button (click)="goBack()" *ngIf="!firstStep">Back</button>
+  <button mat-button (click)="save()" *ngIf="lastStep"> {{ label || 'Save' }}</button>
+  <button mat-button (click)="goFoward()" *ngIf="!lastStep">Next</button>
+</mat-dialog-actions>

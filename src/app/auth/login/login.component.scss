@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 75px 0;
+  padding: 0 10px;
+}
+
+mat-card {
+  width: 550px;
+}
+
+form {
+  padding: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button[mat-stroked-button] {
+  width: 100%;
+}

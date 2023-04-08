@@ -1,0 +1,39 @@
+<form [formGroup]="form">
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <table [cellSpacing]="0">
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Birth Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthDate" readonly />
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </td>
+
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>CPF</mat-label>
+            <input matInput mask="000.000.000-00" [dropSpecialCharacters]="false" formControlName="cpf" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="padding: 0 0 18px 15px">
+    <label style="padding-right: 10px">Gender:</label>
+    <mat-radio-group color="primary" formControlName="gender">
+      <mat-radio-button *ngFor="let gender of genders" [value]="gender.value">
+        {{ gender.viewValue }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</form>

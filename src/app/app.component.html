@@ -1,0 +1,5 @@
+<app-toolbar [title]="title" [credentials]="(credentials$ | async)" (logoutEvent)="onLogout()"></app-toolbar>
+<div class="container">
+  <app-loading></app-loading>
+  <router-outlet></router-outlet>
+</div>
